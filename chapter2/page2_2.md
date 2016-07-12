@@ -1,17 +1,10 @@
 # Mysqlのインストール
 MySQLを他パッケージから入れようとする場合、  
-`mysql-libs`が他パッケージと依存関係でインストールされているためそのままではインストールできません。  
-
-すでにインストールされているmysql関連パッケージと入れたいパッケージを入れ替えられるよう  
-ツールをインストールします。  
-
-```
-# yum install –enablerepo=ius,epel yum-plugin-replace
-```
+`mariadb-libs`が他パッケージと依存関係となっていますが、yum経由でインストール可能です。  
 
 **mysqlユーザーの作成**  
 デフォルトでは下記のようなユーザーが作成されます。  
-必要により事前に任意のIDで作成しておく事もできます。
+必要により事前に任意のIDで作成しておく事もできます。  
 
 ```
 # id mysql
@@ -24,15 +17,13 @@ mysql:x:27:27:MySQL Server:/var/lib/mysql:/sbin/nologin
 **mysqlのインストール**  
 
 ```
-# yum --enablerepo=epel,ius replace mysql --replace-with mysql57u
-# yum install mysql57u-server --enablerepo=ius
+# yum install mysql-community-serve --enablerepo=mysql57-community  
 ```
 
 クライアントのみをインストールする場合  
 
 ```
-# yum --enablerepo=epel,ius replace mysql --replace-with mysql57u
-# yum install mysqlclient16 --enablerepo=ius
+# yum install mysql --enablerepo=mysql57-community
 ```
 
 **Mysqlの起動**  
@@ -40,5 +31,5 @@ mysql:x:27:27:MySQL Server:/var/lib/mysql:/sbin/nologin
 任意の場所に出力したい場合は先に`my.cnf`ファイルで`datadir`を指定しておきましょう。  
 
 ```
-# service mysqld start
+# systemctl start mysqld
 ```
