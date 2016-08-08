@@ -11,7 +11,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 例えばmysqlのrootを利用するのはOSのrootアカウントからとし、定義します。  
 
 ```
-# mysql_config_editor set --login-path=root --user=root --password
+# mysql_config_editor set --login-path=root --user=root --host=localhost --password
 Enter password:
 ```
 
