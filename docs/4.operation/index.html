@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>ログのローテート設定 · GitBook</title>
+        <title>MySQLの運用 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -49,10 +49,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../3.replycation/" />
+    <link rel="next" href="1.operation_performance.html" />
     
     
-    <link rel="prev" href="2.configure_cnf.html" />
+    <link rel="prev" href="../3.replycation/" />
     
 
     </head>
@@ -126,9 +126,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="../2.configure/">
             
-                <a href="./">
+                <a href="../2.configure/">
             
                     
                     MySQLの設定
@@ -140,9 +140,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="1.configure_create.html">
+        <li class="chapter " data-level="1.3.1" data-path="../2.configure/1.configure_create.html">
             
-                <a href="1.configure_create.html">
+                <a href="../2.configure/1.configure_create.html">
             
                     
                     MySQLデータベース/ユーザーの作成
@@ -153,9 +153,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="2.configure_cnf.html">
+        <li class="chapter " data-level="1.3.2" data-path="../2.configure/2.configure_cnf.html">
             
-                <a href="2.configure_cnf.html">
+                <a href="../2.configure/2.configure_cnf.html">
             
                     
                     MySQLの設定
@@ -166,9 +166,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.3" data-path="3.configure_rotate.html">
+        <li class="chapter " data-level="1.3.3" data-path="../2.configure/3.configure_rotate.html">
             
-                <a href="3.configure_rotate.html">
+                <a href="../2.configure/3.configure_rotate.html">
             
                     
                     ログのローテート設定
@@ -197,9 +197,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../4.operation/">
+        <li class="chapter active" data-level="1.5" data-path="./">
             
-                <a href="../4.operation/">
+                <a href="./">
             
                     
                     MySQLの運用
@@ -211,9 +211,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../4.operation/1.operation_performance.html">
+        <li class="chapter " data-level="1.5.1" data-path="1.operation_performance.html">
             
-                <a href="../4.operation/1.operation_performance.html">
+                <a href="1.operation_performance.html">
             
                     
                     性能調査
@@ -224,9 +224,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../4.operation/2.operation_backup.html">
+        <li class="chapter " data-level="1.5.2" data-path="2.operation_backup.html">
             
-                <a href="../4.operation/2.operation_backup.html">
+                <a href="2.operation_backup.html">
             
                     
                     バックアップ／リストア
@@ -272,7 +272,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >ログのローテート設定</a>
+        <a href=".." >MySQLの運用</a>
     </h1>
 </div>
 
@@ -287,52 +287,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mysql&#x30ED;&#x30B0;&#x306E;&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;">MySQL&#x30ED;&#x30B0;&#x306E;&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;</h1>
-<p>mysql&#x306E;&#x30ED;&#x30B0;&#x306F;rpm&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;OS&#x6A19;&#x6E96;&#x306E;logrotate&#x3067;&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;&#x3055;&#x308C;&#x308B;<br>&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x5909;&#x66F4;&#x3057;&#x3066;&#x3044;&#x305F;&#x308A;&#x3001;&#x51FA;&#x529B;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x5897;&#x3084;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x5B9A;&#x7FA9;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;  </p>
-<p>&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;&#x306F;<code>mysqladmin</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x304C;&#x3001;&#x5B9F;&#x884C;&#x6642;&#x306B;<code>~/.mylogin.cnf</code>&#x3092;&#x898B;&#x308B;&#x305F;&#x3081;<br>&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;root&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;  </p>
-<pre><code># vim /etc/logrotate.d/mysql
+                                <h1 id="mysql&#x306E;&#x904B;&#x7528;">MySQL&#x306E;&#x904B;&#x7528;</h1>
 
-# The log file name and location can be set in
-# /etc/my.cnf by setting the &quot;log-error&quot; option
-# in [mysqld]  section as follows:
-#
-# [mysqld]
-# log-error=/var/log/mysqld.log
-#
-# For the mysqladmin commands below to work, root account
-# password is required. Use mysql_config_editor(1) to store
-# authentication credentials in the encrypted login path file
-# ~/.mylogin.cnf
-#
-# Example usage:
-#
-#  mysql_config_editor set --login-path=client --user=root --host=localhost --password
-#
-# When these actions has been done, un-comment the following to
-# enable rotation of mysqld&apos;s log error.
-#
-
-#/var/log/mysqld.log {
-/var/log/mysql/mysqld.log
-/var/log/mysql/slow_query.log
-{
-        create 640 mysql mysql
-        notifempty
-        daily
-        #rotate 5
-        rotate 365
-        missingok
-        compress
-    postrotate
-       # just if mysqld is really running
-       if test -x /usr/bin/mysqladmin &amp;&amp; \
-          /usr/bin/mysqladmin ping &amp;&gt;/dev/null
-       then
-          /usr/bin/mysqladmin flush-logs
-       fi
-    endscript
-}
-</code></pre>
                                 
                                 </section>
                             
@@ -359,12 +315,12 @@
 
             
                 
-                <a href="2.configure_cnf.html" class="navigation navigation-prev " aria-label="Previous page: MySQLの設定">
+                <a href="../3.replycation/" class="navigation navigation-prev " aria-label="Previous page: レプリケーション設定">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../3.replycation/" class="navigation navigation-next " aria-label="Next page: レプリケーション設定">
+                <a href="1.operation_performance.html" class="navigation navigation-next " aria-label="Next page: 性能調査">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -375,7 +331,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ログのローテート設定","level":"1.3.3","depth":2,"next":{"title":"レプリケーション設定","level":"1.4","depth":1,"path":"3.replycation/index.md","ref":"3.replycation/index.md","articles":[]},"previous":{"title":"MySQLの設定","level":"1.3.2","depth":2,"path":"2.configure/2.configure_cnf.md","ref":"2.configure/2.configure_cnf.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"2.configure/3.configure_rotate.md","mtime":"2018-05-23T11:00:39.159Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-23T11:02:01.907Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MySQLの運用","level":"1.5","depth":1,"next":{"title":"性能調査","level":"1.5.1","depth":2,"path":"4.operation/1.operation_performance.md","ref":"4.operation/1.operation_performance.md","articles":[]},"previous":{"title":"レプリケーション設定","level":"1.4","depth":1,"path":"3.replycation/index.md","ref":"3.replycation/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"4.operation/index.md","mtime":"2018-05-23T10:46:24.836Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-23T12:37:34.333Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
